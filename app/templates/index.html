@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciador de Tarefas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <h1 class="mb-4">📋 Gerenciador de Tarefas</h1>
+
+    <form id="form-tarefa" class="mb-4">
+      <div class="row g-2">
+        <div class="col-md-4">
+          <input type="text" class="form-control" id="titulo" placeholder="Título da tarefa" required>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" id="descricao" placeholder="Descrição" required>
+        </div>
+        <div class="col-md-2">
+          <select id="status" class="form-select">
+            <option value="pendente">Pendente</option>
+            <option value="concluída">Concluída</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <button type="submit" class="btn btn-primary w-100">➕</button>
+        </div>
+      </div>
+    </form>
+
+    <ul id="lista-tarefas" class="list-group"></ul>
+  </div>
+
+  <!-- Modal de Edição -->
+<div class="modal fade" id="modalEdicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEdicaoLabel">Editar Tarefa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editar-id">
+          <div class="mb-3">
+            <label for="editar-titulo" class="form-label">Título</label>
+            <input type="text" class="form-control" id="editar-titulo">
+          </div>
+          <div class="mb-3">
+            <label for="editar-descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="editar-descricao">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="salvar-edicao">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
